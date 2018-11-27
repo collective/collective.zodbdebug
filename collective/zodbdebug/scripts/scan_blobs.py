@@ -2,30 +2,35 @@
 u"""Scan the blobs directory and print information about each blob.
 
 Usage:
-  zodbdebug_blobs [options]
+  scan_blobs [options]
 
 Options:
   -h, --help                            Print this message.
 """
-from docopt import docopt
 from collective.zodbdebug.core import ZODBInfo
 from collective.zodbdebug.util import setup_logging
+from docopt import docopt
 import hashlib
 import logging
 import math
 import os
 
+SCRIPT_NAME = 'scan_blobs'
 
-PLONE_ADMIN_USER = 'ploneadmin'
-
-app = app  # noqa
-log = logging.getLogger('diagnose_blobs')
+log = logging.getLogger(SCRIPT_NAME)
 
 
-def hash_file(path):
-    with open(path, 'r') as f:
-        data = f.read(1024)
-    return '({},{})'.format(hashlib.md5(data).hexdigest(), os.path.getsize(path))
+def main(app, cmd_args):
+    # When invoked via entry point cmd_args will be something like:
+    # ['-c', 'script_name', 'actual', 'args']
+    args = list(cmd_args)
+    if args[0] == '-c':
+        args = args[2:]
+
+    arguments = docopt(__doc__, argv=args)  # noqa
+    setup_logging()
+    diagnose_blobs(app)
+    log.info('Finish!')
 
 
 def diagnose_blobs(app):
@@ -48,12 +53,7 @@ def diagnose_blobs(app):
         print
 
 
-def main(app, cmd_args):
-    arguments = docopt(__doc__, argv=cmd_args)  # noqa
-    setup_logging()
-    diagnose_blobs(app)
-    log.info('Finish!')
-
-
-if 'app' in locals():
-    main(app)
+def hash_file(path):
+    with open(path, 'r') as f:
+        data = f.read(1024)
+    return '({},{})'.format(hashlib.md5(data).hexdigest(), os.path.getsize(path))

@@ -18,7 +18,7 @@ import walkdir
 class ZODBInfo(object):
     u"""Provide a better interface to analyze a ZODB.
 
-    The main value of this class is to provide information about the references between objects.
+    The main purpose of this class is to provide information about the references between objects.
     To achieve this a reference map must be calculated. Since it is a slow process it must be done
     explicitly, by calling the `build_reference_maps()` method. Not all methods of this class needs
     this reference map. If the map is needed by a method and it is not built yet, then an exception

@@ -34,7 +34,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'ZODB',
+        'ZODB3',
         'docopt',
         'plone.memoize',
         'rbco.caseclasses',
@@ -43,7 +43,7 @@ setup(
     ],
     entry_points={
         'zopectl.command': [
-            'zodbdebug_blobs = collective.zodbdebug.scripts.blobs:main'
+            'scan_blobs = collective.zodbdebug.scripts.scan_blobs:main'
         ]
     },
 )
