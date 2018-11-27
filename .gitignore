@@ -1,0 +1,17 @@
+*.egg
+*.egg-info
+*.pyc
+*.sublime-workspace
+.codeintel
+.installed.cfg
+.mr.developer.cfg
+bin
+buildout.cfg
+checkouts
+develop-eggs
+eggs
+include
+lib
+parts
+picked_versions.cfg
+var

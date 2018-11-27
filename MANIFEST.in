@@ -1,0 +1,6 @@
+recursive-include collective *
+recursive-include docs *
+include *
+global-exclude *.pyc
+prune collective/zodbdebug/_egg_files
+
