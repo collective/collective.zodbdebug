@@ -20,3 +20,15 @@ Install
 =======
 
 Install it as an egg of a Zope instance.
+
+
+See also
+========
+
+This discussion: `Any way to track down the content object a blobstorage asset belongs to? (RelStorage)`_
+
+
+.. References:
+
+.. _`Any way to track down the content object a blobstorage asset belongs to? (RelStorage)`: https://community.plone.org/t/any-way-to-track-down-the-content-object-a-blobstorage-asset-belongs-to-relstorage/7191
+
