@@ -3,7 +3,7 @@ from setuptools import find_packages
 from setuptools import setup
 import os
 
-version = '0.0.1.dev0'
+version = '0.0.1'
 
 setup(
     name='collective.zodbdebug',
