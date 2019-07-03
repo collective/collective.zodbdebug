@@ -7,27 +7,21 @@ Usage:
 Options:
   -h, --help                            Print this message.
 """
-from collective.zodbdebug.core import ZODBInfo
-from collective.zodbdebug.util import setup_logging
+from ..core import ZODBInfo
+from ..util import get_arguments
+from ..util import setup_logging
 from docopt import docopt
 import hashlib
 import logging
 import math
 import os
 
-SCRIPT_NAME = 'scan_blobs'
 
-log = logging.getLogger(SCRIPT_NAME)
+log = logging.getLogger(__name__)
 
 
 def main(app, cmd_args):
-    # When invoked via entry point cmd_args will be something like:
-    # ['-c', 'script_name', 'actual', 'args']
-    args = list(cmd_args)
-    if args[0] == '-c':
-        args = args[2:]
-
-    arguments = docopt(__doc__, argv=args)  # noqa
+    arguments = docopt(__doc__, argv=get_arguments(cmd_args))  # noqa
     setup_logging()
     diagnose_blobs(app)
     log.info('Finish!')

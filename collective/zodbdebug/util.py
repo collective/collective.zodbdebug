@@ -4,6 +4,7 @@ import itertools
 import logging
 import os
 import sys
+import binascii
 
 _MARKER = object()
 
@@ -91,3 +92,22 @@ def setup_logging(level=logging.INFO):
     handler.setFormatter(formatter)
     root_logger.handlers = [handler]
     logging.getLogger('requests').setLevel(logging.WARNING)
+
+
+def get_arguments(argv=None):
+    u"""Get the arguments passed to the script in the command line.
+
+    When the scripts are executed via the values in the args list will contain other stuff besides
+    the actual arguments to the script. This function return only the relevant arguments.
+
+    The result of this function can be passed to the `docpt` function.
+
+    Arguments:
+    argv (Optional[Sequence[str]]) -- Sequence of arguments. Defaults to `sys.argv`.
+
+    Return (Sequence[str]) -- Arguments passed to the script.
+    """
+    if argv is None:
+        argv = sys.argv
+
+    return list(itertools.dropwhile(lambda i: i != '-c', argv))[2:]
