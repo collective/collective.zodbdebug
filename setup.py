@@ -43,7 +43,8 @@ setup(
     ],
     entry_points={
         'zopectl.command': [
-            'scan_blobs = collective.zodbdebug.scripts.scan_blobs:main'
+            'scan_blobs = collective.zodbdebug.scripts.scan_blobs:main',
+            'show_transactions = collective.zodbdebug.scripts.show_transactions:main',
         ]
     },
 )
